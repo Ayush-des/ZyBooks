@@ -59,39 +59,28 @@ public class ShoppingCart {
 		
 	}
 	
-	public void modifyItem(ItemToPurchase item)
-	{
-		for(int i = 0; i<cartItems.size(); i++)
-		{
-			ItemToPurchase thing = cartItems.get(i);
-			String name = thing.getName();
-			
-			if(name.equals(item) )
-			{
-				if(name.equals("none") && (thing.getPrice() == 0) && (thing.getQuantity() == 0) )
-				{
-					Scanner input = new Scanner(System.in);
-					System.out.println("Type in item description");
-					String modify = input.nextLine();
-					thing.setDescription(modify);
-					
-					System.out.println("Type in new price");
-					int price = input.nextInt();
-					input.nextLine();
-					thing.setPrice(price);
-					
-					System.out.println("Type in new quanity");
-					int quanity = input.nextInt();
-					input.nextLine();
-					thing.setQuantity(quanity);
-					
-				}else {
-					System.out.println("Item not found in cart. Nothing modified.");
-				}
-				
-			}
-		}
+	public void modifyItem(ItemToPurchase item) {
+	    boolean itemFound = false;
+	    for (ItemToPurchase cartItem : cartItems) {
+	        if (cartItem.getName().equals(item.getName())) {
+	            if (!item.getDescription().equals("none")) {
+	                cartItem.setDescription(item.getDescription());
+	            }
+	            if (item.getPrice() != 0) {
+	                cartItem.setPrice(item.getPrice());
+	            }
+	            if (item.getQuantity() != 0) {
+	                cartItem.setQuantity(item.getQuantity());
+	            }
+	            itemFound = true;
+	            break;
+	        }
+	    }
+	    if (!itemFound) {
+	        System.out.println("Item not found in cart. Nothing modified.");
+	    }
 	}
+
 	
 	public int getNumItemsInCart()
 	{
@@ -117,34 +106,46 @@ public class ShoppingCart {
 		return sum;
 	}
 	
-	public void printTotal ()
+	public void printTotal()
 	{
+		
+		System.out.println("" + getCustomerName() + "'s Shopping Cart - " + getDate());	
+		
+		int numItems = 0;
+		int itemQuantity = 0;
+		for(int i=0; i<cartItems.size(); i++)
+		{
+			itemQuantity = cartItems.get(i).getQuantity();
+			numItems += itemQuantity;
+		}
+		System.out.println("Number of Items: " + numItems);
+		System.out.println();
+	
 		if((cartItems.size() > 0))
 		{
-			System.out.println("" + getCustomerName() + "'s Shopping Cart - " + getDate());	
-			System.out.println("Number of Items: " + cartItems.size());
-			System.out.println();
-		
 			for(int i = 0; i < cartItems.size(); i++)
 				{
 				ItemToPurchase item = cartItems.get(i);
 				int price = item.getPrice();
 				int quanity = item.getQuantity();
 				int sum = price * quanity;
-				System.out.println(item.getDescription() + " " + item.getQuantity() 
-								+ " @ " + item.getPrice() + " = " + sum);
+				System.out.println(item.getName() + " " + item.getQuantity() 
+								+ " @ $" + item.getPrice() + " = $" + sum);
 				} 
-			System.out.println("Total: $" + getCostOfCart());
+			
 		
 		}else {
 			System.out.println("SHOPPING CART IS EMPTY");
 		}
+		System.out.println();
+		System.out.println("Total: $" + getCostOfCart());
 		
 	}
 	
 	public void printDescriptions() {
 		System.out.println("" + getCustomerName() + "'s Shopping Cart - " + getDate());	
-		System.out.println("Item Description");
+		System.out.println();
+		System.out.println("Item Descriptions");
 		for(int i = 0; i < cartItems.size(); i++)
 			{
 			ItemToPurchase item = cartItems.get(i);
@@ -152,52 +153,7 @@ public class ShoppingCart {
 			} 
 	}
 	
-	public void printMenu()
-	{
-		System.out.println("MENU");
-		System.out.println("a - Add item to cart\n"
-				+ "d - Remove item from cart\n"
-				+ "c - Change item quantity\n"
-				+ "i - Output items' descriptions\n"
-				+ "o - Output shopping cart\n"
-				+ "q - Quit");
-		System.out.println();
-		System.out.println("Choose an option:");
-		
-	}
-	
-	public void executeMenu(char letter, ShoppingCart cart, Scanner input)
-	{
-		switch (letter)
-		{
-		case 'a':
-			System.out.println("ADD ITEM TO CART");
-			System.out.println("Enter the item name:");
-			
-			break;
-		case 'd':
-			System.out.println("FIX ME");
-			break;
-		case 'c':
-			System.out.println("FIX ME");
-			break;
-		case 'i':
-			System.out.println("OUTPUT ITEMS' DESCRIPTIONS");
-			printDescriptions();
-			break;
-		case 'o':
-			System.out.println("OUTPUT SHOPPING CART");
-			printTotal();
-			break;
-		case 'q':
-			break;
-		default: 
-			System.out.println("Choose an option");
-		}
-	}
 
-	
-	
-	
+
 
 }
