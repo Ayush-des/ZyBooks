@@ -24,6 +24,8 @@ public class ShoppingCartManager {
 		ShoppingCart cart = new ShoppingCart(name, date);
 		
 		
+		cart.printShop();
+		
 		boolean done = false;
 		while (!done)
 		{

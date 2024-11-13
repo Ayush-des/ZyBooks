@@ -1,3 +1,6 @@
+import java.io.File;
+import java.util.*;
+
 
 public class ItemToPurchase {
 
@@ -5,6 +8,8 @@ public class ItemToPurchase {
 	private int itemPrice;
 	private int itemQuantity;
 	private String itemDescription;
+
+	public static ArrayList<ItemToPurchase> shopItems = new ArrayList<ItemToPurchase>();
 	
 	
 	/**
@@ -26,6 +31,13 @@ public class ItemToPurchase {
 	 * @param itemQuantity
 	 * @param itemDescription
 	 */
+	
+	public ItemToPurchase(String itemName,String itemDescription, int itemPrice) {
+		this.itemName = itemName;
+		this.itemPrice = itemPrice;
+		this.itemQuantity = 0;
+		this.itemDescription = itemDescription;
+	}
 	public ItemToPurchase(String itemName,String itemDescription, int itemPrice, int itemQuantity ) {
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
@@ -97,7 +109,7 @@ public class ItemToPurchase {
 		this.itemDescription = itemDescription;
 	}
 
-	public void printItemCost()
+	public void printItemCost() // 
 	{
 		int sum = itemQuantity * itemPrice;
 		System.out.println(itemName + " " + itemQuantity + " @ $" + itemPrice + " = $" + sum);
@@ -106,6 +118,14 @@ public class ItemToPurchase {
 	public void printItemDescription()
 	{
 		System.out.println(itemName + ": " + itemDescription);
+	}
+	
+	
+	public void printItem()
+	{
+		System.out.println("Name: " + itemName);
+		System.out.println("Price: " + itemPrice);
+		System.out.println("Description: " + itemDescription); 
 	}
 	
 	
