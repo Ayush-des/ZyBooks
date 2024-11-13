@@ -10,16 +10,10 @@ public class ShoppingCartPrinter {
       ItemToPurchase item1 = new ItemToPurchase();
       ItemToPurchase item2 = new ItemToPurchase();
       
-     
-
-      
-      
       
       String name;
       int quantity;
       int price;
-      
-      
     	  
     	  System.out.println("Item " + 1);
     	  System.out.println("Enter the item name:");

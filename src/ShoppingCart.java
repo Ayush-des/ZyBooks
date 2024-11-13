@@ -41,14 +41,14 @@ public class ShoppingCart {
 		cartItems.add(item);
 	}
 	
-	public void removeItem(String item)
+	public void removeItem(String itemName)
 	{
 		
 		for(int i = 0; i<cartItems.size(); i++)
 		{
 			ItemToPurchase thing = cartItems.get(i);
 			
-			if(thing.getName().equals(item) )
+			if(thing.getName().equals(itemName))
 			{
 				cartItems.remove(i);
 				return;
@@ -59,7 +59,7 @@ public class ShoppingCart {
 		
 	}
 	
-	public void modifyItem(ItemToPurchase item) {
+	public void modifyItem(ItemToPurchase item) { // ChatGPT 
 	    boolean itemFound = false;
 	    for (ItemToPurchase cartItem : cartItems) {
 	        if (cartItem.getName().equals(item.getName())) {
@@ -99,8 +99,6 @@ public class ShoppingCart {
 			int quantity = item.getQuantity();
 			int pq = price * quantity;
 			sum += pq;
-			
-			
 		}
 		
 		return sum;
@@ -138,8 +136,7 @@ public class ShoppingCart {
 			System.out.println("SHOPPING CART IS EMPTY");
 		}
 		System.out.println();
-		System.out.println("Total: $" + getCostOfCart());
-		
+		System.out.println("Total: $" + getCostOfCart());	
 	}
 	
 	public void printDescriptions() {
