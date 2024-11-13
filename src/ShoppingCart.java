@@ -153,7 +153,7 @@ public class ShoppingCart {
 			} 
 	}
 	
-	private void readData() { //ChatGPT reading in file
+	private void readDataRegular() { //ChatGPT reading in file
 	    try {
 	        File data = new File("market.txt");
 	        fileReader = new Scanner(data);
@@ -184,12 +184,49 @@ public class ShoppingCart {
 	    }
 	    fileReader.close();
 	}
+	
+	private void readDataPerish() {
+	    try {
+	        File data = new File("realPerish.txt");
+	        fileReader = new Scanner(data);
+	        fileReader.useDelimiter(",|\\n"); // Use comma and newline as delimiters
+	    } catch (FileNotFoundException ex) {
+	        System.out.println("File not found: " + ex.getMessage());
+	        return; // Exit the method if the file is not found
+	    }
+
+	    while (fileReader.hasNext()) {
+	        try {
+	            String itemName = fileReader.next().trim();
+	            int itemPrice = fileReader.nextInt();
+	            String itemDesc = fileReader.next().trim();
+	            String expirationDate = fileReader.next().trim();
+
+	            // Debugging output to check values read
+	            System.out.println("Read Item: Name=" + itemName + ", Price=" + itemPrice + ", Description=" + itemDesc + ", Expiration Date=" + expirationDate);
+
+	            Produce item = new Produce(itemName, itemDesc, itemPrice, expirationDate);
+	            shopItems.add(item);
+	        } catch (InputMismatchException e) {
+	            System.out.println("Data format error: " + e.getMessage());
+	            if (fileReader.hasNext()) {
+	                fileReader.nextLine(); // Skip to the next line if there's a format error
+	            }
+	        }
+	    }
+	    fileReader.close();
+	}
+
+	
+	
 
 	
 	
 	public void printShop()
 	{
-		readData();
+		readDataRegular();
+		readDataPerish();
+		
 		for(ItemToPurchase itemz : shopItems)
 		{
 			itemz.printItem();

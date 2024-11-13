@@ -1,0 +1,10 @@
+Milk (1 Gallon),4,Fresh pasteurized milk rich in calcium,2023-12-13
+Eggs (Dozen),3,Cage-free large eggs perfect for breakfast or baking,2023-12-13
+Sliced Bread (Loaf),2,Soft white or whole wheat ideal for sandwiches and toast,2023-12-13
+Chicken Breast (1 lb),6,Boneless skinless versatile for various recipes,2023-12-13
+Butter (1 lb),5,Creamy and unsalted great for cooking or spreading,2023-12-13
+Cheddar Cheese (8 oz),4,Sharp cheddar excellent for snacking or melting,2023-12-13
+Apples (3 lb Bag),5,Crisp sweet apples good for snacks and baking,2023-12-13
+Baby Spinach (10 oz Bag),3,Fresh and pre-washed perfect for salads or smoothies,2023-12-13
+Ground Beef (1 lb),7,Lean and flavorful ideal for burgers and tacos,2023-12-13
+Yogurt (32 oz Tub),4,Creamy plain yogurt suitable for breakfast or baking,2023-12-13

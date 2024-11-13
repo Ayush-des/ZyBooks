@@ -15,6 +15,15 @@ public class Produce extends ItemToPurchase {
 		this.expirationDate = exprationDate;
 	}
 
+
+	public Produce (String itemName,String itemDescription, int itemPrice, String expirationDate)
+	{
+		this.itemName = itemName;
+		this.itemPrice = itemPrice;
+		this.itemQuantity = 0;
+		this.itemDescription = itemDescription;
+		this.expirationDate = expirationDate;
+	}
 	
 	
 	public void printItem()

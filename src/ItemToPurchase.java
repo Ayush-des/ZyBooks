@@ -4,10 +4,10 @@ import java.util.*;
 
 public class ItemToPurchase {
 
-	private String itemName; 
-	private int itemPrice;
-	private int itemQuantity;
-	private String itemDescription;
+	protected String itemName; 
+	protected int itemPrice;
+	protected int itemQuantity;
+	protected String itemDescription;
 
 	public static ArrayList<ItemToPurchase> shopItems = new ArrayList<ItemToPurchase>();
 	
@@ -124,7 +124,7 @@ public class ItemToPurchase {
 	public void printItem()
 	{
 		System.out.println("Name: " + itemName);
-		System.out.println("Price: " + itemPrice);
+		System.out.println("Price: $" + itemPrice);
 		System.out.println("Description: " + itemDescription); 
 	}
 	
