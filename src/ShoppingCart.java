@@ -7,8 +7,8 @@ public class ShoppingCart {
 	private String customerName;
 	private String currentDate;
 	private ArrayList <ItemToPurchase>cartItems = new ArrayList<ItemToPurchase> ();
-	private Scanner scan, fileReader;
 	public static ArrayList<ItemToPurchase> shopItems = new ArrayList<ItemToPurchase>();
+	private Scanner scan, fileReader;
 	
 	public ShoppingCart() 
 	{
@@ -153,7 +153,7 @@ public class ShoppingCart {
 			} 
 	}
 	
-	private void readDataRegular() { //ChatGPT reading in file
+	private void readDataRegular() { // Used ChatGPT
 	    try {
 	        File data = new File("market.txt");
 	        fileReader = new Scanner(data);
@@ -185,7 +185,7 @@ public class ShoppingCart {
 	    fileReader.close();
 	}
 	
-	private void readDataPerish() {
+	private void readDataPerish() { // Used ChatGPT
 	    try {
 	        File data = new File("realPerish.txt");
 	        fileReader = new Scanner(data);
@@ -203,12 +203,12 @@ public class ShoppingCart {
 	            String expirationDate = fileReader.next().trim();
 
 	            // Debugging output to check values read
-	            System.out.println("Read Item: Name=" + itemName + ", Price=" + itemPrice + ", Description=" + itemDesc + ", Expiration Date=" + expirationDate);
+//	            System.out.println("Read Item: Name=" + itemName + ", Price=" + itemPrice + ", Description=" + itemDesc + ", Expiration Date=" + expirationDate);
 
 	            Produce item = new Produce(itemName, itemDesc, itemPrice, expirationDate);
 	            shopItems.add(item);
 	        } catch (InputMismatchException e) {
-	            System.out.println("Data format error: " + e.getMessage());
+//	            System.out.println("Data format error: " + e.getMessage());
 	            if (fileReader.hasNext()) {
 	                fileReader.nextLine(); // Skip to the next line if there's a format error
 	            }
