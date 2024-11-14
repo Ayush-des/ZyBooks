@@ -12,18 +12,15 @@ public class ShoppingCartManager {
 
 		for(int i = 0; i<2;  i++)
 		{
-			ItemToPurchase item= new ItemToPurchase("ToothBrush (10 pack)", "Self Care", i+4, i+3);
+			ItemToPurchase item= new ItemToPurchase("ToothBrush (10 pack)", "Self Care", i+4, i);
 			store.addItemToShop(item);
 		}
 		
 		for(int i = 0; i<2;  i++)
 		{
-			Produce item= new Produce("Milk (1 Gallon)", "Dairy", i+2, i+1, "10/15/2024");
+			Produce item= new Produce("Milk (1 Gallon)", "Dairy", i+4, i, "10/15/2024");
 			store.addItemToShop(item);
 		}
-		
-
-		
 		
 		
 		System.out.println("Enter customer's name:");
@@ -52,12 +49,8 @@ public class ShoppingCartManager {
 			int goodOptions [] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 			int option = input.nextInt();
 			input.nextLine();
-			
-			
+					
 			boolean correctInput = false;
-			
-			
-			
 			
 			for(int i=0; i<goodOptions.length; i++)
 			{
@@ -128,8 +121,9 @@ public class ShoppingCartManager {
 
 		case 2:
 			System.out.println("Choose filter option: ");
-			System.out.println("1. Price");
-			System.out.println("2. Perishables");
+			System.out.println("1. Price (highest to lowest)");
+			System.out.println("2. Perishables in stock");
+			System.out.println("3. Only in stock items");
 			
 			int filter = input.nextInt();
 			//price logic
@@ -137,12 +131,16 @@ public class ShoppingCartManager {
 			/*
 			 * use if statement for this?
 			 */
+			
 			if(filter == 1)
 			{
 				Shop.filterPrice();
 			}else if(filter == 2)
 			{
 				Shop.printProduce();
+			}else if(filter ==3 )
+			{
+				Shop.printInStockItems();
 			}else {
 				System.out.println("Invalid input");
 			}

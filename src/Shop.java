@@ -36,8 +36,10 @@ public class Shop {
 		{
 			if(item.getDescription().equals("Dairy") || item.getDescription().equals("Fruit")|| item.getDescription().equals("Vegetable"))
 			{
-				item.printItem();
-				System.out.println();
+				if(item.inStock) {
+					item.printItem();
+					System.out.println();
+				}
 			}
 		}
 	}
@@ -78,6 +80,17 @@ public class Shop {
 		
 	}
 	
+	public static void printInStockItems()
+	{
+		for(ItemToPurchase item : store)
+		{
+			if(item.inStock)
+			{
+				item.printItem();
+				System.out.println();
+			}
+		}
+	}
 	
 	
 }

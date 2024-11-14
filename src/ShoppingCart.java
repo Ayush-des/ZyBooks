@@ -56,9 +56,15 @@ public class ShoppingCart {
 		{
 			if(item.getName().equals(itemName))
 			{
-				cartItems.add(item);
-				item.setQuantityInCart(quantity);
 				found = true;
+				
+				if(item.inStock) {
+					cartItems.add(item);
+					item.setQuantityInCart(quantity);
+				}else {
+					System.out.println("This item is not in stock.");
+				}
+				
 				
 			}
 		}
@@ -87,7 +93,7 @@ public class ShoppingCart {
 		
 	}
 	
-	public void modifyItem(ItemToPurchase item) { // ChatGPT 
+	public void modifyItem(ItemToPurchase item) { // ChatGPT && fix it 
 	    boolean itemFound = false;
 	    for (ItemToPurchase cartItem : cartItems) {
 	        if (cartItem.getName().equals(item.getName())) {
