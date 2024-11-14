@@ -16,16 +16,32 @@ public class Produce extends ItemToPurchase {
 	}
 
 
-	public Produce (String itemName,String itemDescription, int itemPrice, String expirationDate)
+	public Produce (String itemName,String itemDescription, int itemPrice, int itemQuantity, String expirationDate)
 	{
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
-		this.itemQuantity = 0;
+		this.itemQuantity = itemQuantity;
 		this.itemDescription = itemDescription;
 		this.expirationDate = expirationDate;
+		if(itemQuantity > 0)
+		{
+			this.inStock = true;
+		}else {
+			this.inStock = false;
+		}
 	}
 	
-	
+	public Produce() {
+		// TODO Auto-generated constructor stub
+		this.itemName = "none";
+		this.itemPrice = 0;
+		this.itemQuantity = 0;
+		itemDescription = "none";
+		expirationDate = "none";
+		this.inStock = false;
+		
+	}
+	@Override
 	public void printItem()
 	{
 		super.printItem();

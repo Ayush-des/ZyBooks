@@ -7,9 +7,9 @@ public class ItemToPurchase {
 	protected String itemName; 
 	protected int itemPrice;
 	protected int itemQuantity;
-	protected String itemDescription;
-
-	public static ArrayList<ItemToPurchase> shopItems = new ArrayList<ItemToPurchase>();
+	protected String itemDescription; // this is going to be type (self care, dairy, vegetable, and fruits
+	protected boolean inStock;
+	protected int quantityInCart;
 	
 	
 	/**
@@ -22,6 +22,7 @@ public class ItemToPurchase {
 		this.itemPrice = 0;
 		this.itemQuantity = 0;
 		itemDescription = "none";
+		inStock = false;
 	}
 
 
@@ -37,12 +38,23 @@ public class ItemToPurchase {
 		this.itemPrice = itemPrice;
 		this.itemQuantity = 0;
 		this.itemDescription = itemDescription;
+		this.inStock = false;
+		
 	}
+	
+
+
 	public ItemToPurchase(String itemName,String itemDescription, int itemPrice, int itemQuantity ) {
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
 		this.itemQuantity = itemQuantity;
 		this.itemDescription = itemDescription;
+		if(itemQuantity > 0)
+		{
+			inStock = true;
+		}else {
+			inStock = false;
+		}
 	}
 
 
@@ -108,8 +120,40 @@ public class ItemToPurchase {
 	public void setDescription(String itemDescription) {
 		this.itemDescription = itemDescription;
 	}
+	
+	
+	/**
+	 * @return the quantityInCart
+	 */
+	public int getQuantityInCart() {
+		return quantityInCart;
+	}
 
-	public void printItemCost() // 
+
+	/**
+	 * @param quantityInCart the quantityInCart to set
+	 */
+	public void setQuantityInCart(int quantityInCart) {
+		this.quantityInCart = quantityInCart;
+	}
+
+
+	/**
+	 * @return the inStock
+	 */
+	public boolean isInStock() {
+		return inStock;
+	}
+
+
+	/**
+	 * @param inStock the inStock to set
+	 */
+	public void setInStock(boolean inStock) {
+		this.inStock = inStock;
+	}
+
+	public void printItemCost() // Fix to where it's only the amount customer has in cart
 	{
 		int sum = itemQuantity * itemPrice;
 		System.out.println(itemName + " " + itemQuantity + " @ $" + itemPrice + " = $" + sum);

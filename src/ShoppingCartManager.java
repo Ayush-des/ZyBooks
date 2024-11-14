@@ -1,11 +1,29 @@
 import java.util.*;
 
-
 public class ShoppingCartManager {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner input = new Scanner(System.in);
+		
+		
+		Shop store = new Shop();
+		
+
+		for(int i = 0; i<2;  i++)
+		{
+			ItemToPurchase item= new ItemToPurchase("ToothBrush (10 pack)", "Self Care", i+4, i+3);
+			store.addItemToShop(item);
+		}
+		
+		for(int i = 0; i<2;  i++)
+		{
+			Produce item= new Produce("Milk (1 Gallon)", "Dairy", i+2, i+1, "10/15/2024");
+			store.addItemToShop(item);
+		}
+		
+
+		
 		
 		
 		System.out.println("Enter customer's name:");
@@ -24,7 +42,6 @@ public class ShoppingCartManager {
 		ShoppingCart cart = new ShoppingCart(name, date);
 		
 		
-		cart.printShop();
 		
 		boolean done = false;
 		while (!done)
@@ -32,9 +49,10 @@ public class ShoppingCartManager {
 			printMenu();
 			System.out.println("Choose an option:");
 			
-			char goodOptions [] = {'a','d','c','i','o','q'};
-			String option = input.nextLine();
-			char letter = option.charAt(0);
+			int goodOptions [] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+			int option = input.nextInt();
+			input.nextLine();
+			
 			
 			boolean correctInput = false;
 			
@@ -46,7 +64,7 @@ public class ShoppingCartManager {
 		
 				for(int j=0; j<goodOptions.length; j++)
 				{
-					if(letter == goodOptions[j])
+					if(option == goodOptions[j])
 					{
 						correctInput = true;
 						break;
@@ -55,22 +73,21 @@ public class ShoppingCartManager {
 				
 				if(correctInput == false)
 				{
-					System.out.println("Choose an option:");
-					option = input.nextLine();
-					letter = option.charAt(0);
+					System.out.println("Invalid Input. Please choose an option 1-9.");
+					option = input.nextInt();
+					
 					i=0;
 				}
 				
 			}
 			
-			if (letter == 'q') 
+			
+			if (option == 9) 
 			{ 
 				done = true; 
 			}
-
 			
-			executeMenu(letter, cart, input);	
-			
+			executeMenu(option, cart, input, store);	
 			
 			if (!done)
 				{
@@ -84,76 +101,109 @@ public class ShoppingCartManager {
 	public static void printMenu()
 	{
 		System.out.println("MENU");
-		System.out.println("a - Add item to cart\n"
-				+ "d - Remove item from cart\n"
-				+ "c - Change item quantity\n"
-				+ "i - Output items' descriptions\n"
-				+ "o - Output shopping cart\n"
-				+ "q - Quit");
+		System.out.println("Choose one of the following options:");
+		System.out.println("1. View full catalogue");
+		System.out.println("2. Filter");
+		System.out.println("3. Output item descriptions"); //IDK about this one 
+		System.out.println("4. View cart");
+		System.out.println("5. Add to cart");
+		System.out.println("6. Remove from cart");
+		System.out.println("7. Purchase items in cart"); 
+		System.out.println("8. Apply Promo Code"); 
+		System.out.println("9. Exit Shop");
 		System.out.println();
 	}
 	
-	public static void executeMenu(char letter, ShoppingCart cart, Scanner input)
+	public static void executeMenu(int number, ShoppingCart cart, Scanner input, Shop store)
 	{
-		switch (letter)
+		switch (number)
 		{
-		case 'a':
-		    System.out.println("ADD ITEM TO CART");
-		    System.out.println("Enter the item name:");
-		    String name = input.nextLine();
+		case 1:
+		   System.out.println("Full catalogue of items: ");
+		    //call to method to output all items
+		   
+		   Shop.printRealShop();
 
-		    System.out.println("Enter the item description:");
-		    String des = input.nextLine();
-
-		    System.out.println("Enter the item price:");
-		    int price = input.nextInt();
-		    input.nextLine(); // Consume newline
-
-		    System.out.println("Enter the item quantity:");
-		    int quantity = input.nextInt();
-		    input.nextLine(); // Consume newline
-
-		    ItemToPurchase item = new ItemToPurchase(name, des, price, quantity);
-		    
-		    cart.addItem(item);
-		    
-		    
 		    break;
 
-		case 'd':
+		case 2:
+			System.out.println("Choose filter option: ");
+			System.out.println("1. Price");
+			System.out.println("2. Perishables");
+			
+			int filter = input.nextInt();
+			//price logic
+			//perishables logic 
+			/*
+			 * use if statement for this?
+			 */
+			if(filter == 1)
+			{
+				Shop.filterPrice();
+			}else if(filter == 2)
+			{
+				Shop.printProduce();
+			}else {
+				System.out.println("Invalid input");
+			}
+			
+			break;
+		case 3:
+			System.out.println("OUTPUT ITEMS' DESCRIPTIONS");
+//			cart.printDescriptions();
+			
+			break;
+		case 4:
+			System.out.println("OUTPUT SHOPPING CART");
+			cart.printTotal();
+			 
+			break;
+		case 5: //fix this to output the price and description when a name is entered
+			System.out.println("ADD ITEM TO CART");
+		    System.out.println("Enter the item name:");
+		    String name = input.nextLine();
+		    System.out.println("Enter the item quantity:");
+		    int quantity = input.nextInt();
+		    input.nextLine();
+		    cart.addItem(name,quantity,store);
+		  
+			break;
+		case 6:
 			System.out.println("REMOVE ITEM FROM CART");
 			System.out.println("Enter name of item to remove:");
 			String itemName = input.nextLine();
 			cart.removeItem(itemName);
-			break;
-		case 'c':
-			System.out.println("CHANGE ITEM QUANTITY");
-			System.out.println("Enter the item name:");
-			String changeItem = input.nextLine();
-			System.out.println("Enter the new quantity:");
-			int newQuantity = input.nextInt();
-			input.nextLine();
-			
-			ItemToPurchase newItem = new ItemToPurchase();
-			newItem.setName(changeItem);
-			newItem.setQuantity(newQuantity);
-			
-			cart.modifyItem(newItem);
 			
 			break;
-		case 'i':
-			System.out.println("OUTPUT ITEMS' DESCRIPTIONS");
-			cart.printDescriptions();
+			
+		case 7: //purchasing items in cart
+			System.out.println("PURCHASE ITEMS IN CART");
+			System.out.println("Would you like to purchase these items? (y/n)");
+			String option = input.next();
+			if(option.equalsIgnoreCase("y"))
+			{
+				//call checkout method to check out items
+			}
+			else if(option.equalsIgnoreCase("n"))
+			{
+				System.out.println("Your purchase has been cancelled.");
+			}
+			else
+			{
+				System.out.println("Please enter a valid input. ");
+			}
 			break;
-		case 'o':
-			System.out.println("OUTPUT SHOPPING CART");
-			cart.printTotal();
+			
+		case 8: //Apply a promo code
 			break;
-		case 'q':
+		case 9: //exit the store
+			System.out.println("You are now exiting the store. Thank you for shopping with us!");
 			break;
 		default: 
 			System.out.println("Choose an option");
 		}
-	}}
+	}
+	
+}
 	
 
