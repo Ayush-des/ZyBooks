@@ -60,7 +60,7 @@ public class ShoppingCart {
 					cartItems.add(item);
 					item.setQuantityInCart(quantity);
 				}else {
-					System.out.println("This item is not in stock.");
+					System.out.println("This item is not in stock. Or not in stock for the quantity");
 				}
 			}
 		}
@@ -134,6 +134,41 @@ public class ShoppingCart {
 	{
 		
 		System.out.println("" + getCustomerName() + "'s Shopping Cart - " + getDate());	
+		
+		int numItems = 0;
+		int itemQuantity = 0;
+		for(int i=0; i<cartItems.size(); i++)
+		{
+			itemQuantity = cartItems.get(i).getQuantityInCart();
+			numItems += itemQuantity;
+		}
+		System.out.println("Number of Items: " + numItems);
+		System.out.println();
+	
+		if((cartItems.size() > 0))
+		{
+			for(int i = 0; i < cartItems.size(); i++)
+				{
+				ItemToPurchase item = cartItems.get(i);
+				int price = item.getPrice();
+				int quanity = item.getQuantityInCart();
+				int sum = price * quanity;
+				System.out.println(item.getName() + " " + item.getQuantityInCart() 
+									+ " @ $" + item.getPrice() + " = $" + sum);
+				} 
+			
+		
+		}else {
+			System.out.println("SHOPPING CART IS EMPTY");
+		}
+		System.out.println();
+		System.out.println("Total: $" + getCostOfCart());	
+	}
+	
+	public void printTicket()
+	{
+		
+		System.out.println(getDate());	
 		
 		int numItems = 0;
 		int itemQuantity = 0;

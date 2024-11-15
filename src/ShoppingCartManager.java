@@ -18,7 +18,7 @@ public class ShoppingCartManager {
 		
 		for(int i = 0; i<2;  i++)
 		{
-			Produce item= new Produce("Milk (1 Gallon)", "Dairy", i+4, i, "10/15/2024");
+			Produce item= new Produce("Milk", "Dairy", i+4, i, "10/15/2024");
 			store.addItemToShop(item);
 		}
 		
@@ -194,7 +194,7 @@ public class ShoppingCartManager {
 				}
 				else if(option.equalsIgnoreCase("no"))
 				{
-					System.out.println("Your purchase has been cancelled.");
+					System.out.println("Checkout cancelled.");
 				}
 				else
 				{
@@ -204,11 +204,6 @@ public class ShoppingCartManager {
 				System.out.println("There are no items in the cart. Please add items to checkout.");
 			}
 			
-			
-			break;
-			
-		case 8: //Apply a promo code 
-			//Delete me and fix numbers
 			break;
 		case 9: //exit the store
 			System.out.println("You are now exiting the store. Thank you for shopping with us!");

@@ -30,21 +30,7 @@ public class Checkout {
         String response = input.nextLine().toLowerCase();
         
         boolean finsihed = false;
-        while (!finsihed)
-        {
-        	
-        }
-        switch(response)	
-        {
         
-        
-        case "yes":
-        {
-        	
-        }
-        
-        
-        }
 
         if (response.equalsIgnoreCase("yes")) {
         	
@@ -73,13 +59,17 @@ public class Checkout {
             if (choice == 1) {
                 System.out.println("Please enter your membership ID:");
                 boolean done = false;
-                while (!done) { // FIX ME 
+                while (!done) { 
                     String memberId = input.nextLine();
                     if (memberIds.contains(memberId)) {
                         isMember = true;
                         break;
-                    } else {
-                        System.out.println("Invalid membership ID. Please try again.");
+                    } else if (memberId.equals("cancel")){
+                    	return;
+                        
+                    }else {
+                    	System.out.println("Invalid membership ID. Please try again.");
+                        System.out.println("To return to menu type in 'cancel'");
                     }
                 }
             } else if (choice == 2) {
@@ -98,22 +88,31 @@ public class Checkout {
             }
         }else if(response.equalsIgnoreCase("no"))
         {
-        	total += 5.0;
-        }else 
-
-        if (!isMember) {
-            total += 5.0; // Apply non-member fee
+        	ItemToPurchase item = new ItemToPurchase("Non MemberFee", "Fee",5,1);
+        	item.setQuantityInCart(1);
+        	cart.addItem(item);
+        }else {
+        	ItemToPurchase item = new ItemToPurchase("Non MemberFee", "Fee",5,1);
+        	item.setQuantityInCart(1);
+            cart.addItem(item);
         }
         
-
-
-       // Validate credit card 
-        System.out.println("Please enter your credit card number (16 digits):");
+         
+        money(cart,input); 
+    }
+    
+  
+    
+    
+    
+    private void money(ShoppingCart cart, Scanner input)
+    {
+    	System.out.println("Please enter your credit card number (16 digits):");
         double creditCard;
         boolean correct = false;
         while (!correct) {
         	creditCard = input.nextDouble(); 
-        	if (creditCard >= 10000000000000000.0 && creditCard <=9999999999999999.0) { 
+        	if (creditCard >= 1000000000000000.0 && creditCard <=99999999999999999.0) { 
         		
         		String date = cart.getDate();
         		String month = date.substring(0, 2);
@@ -129,7 +128,7 @@ public class Checkout {
         		System.out.println("Thank you for your purchase!");
         		System.out.println("Items only eliblle for refund before: " + num + "/" + month);
         		
-        		cart.printTotal();
+        		cart.printTicket();
         		cart.nuke();
         		correct = true;
         		
@@ -137,10 +136,9 @@ public class Checkout {
         	} else {
         		System.out.println("Invalid card number. Please enter a 16-digit number.");
         	}
-}
-
-
-
-        
+        	}
     }
+    
+    
+    
 }
