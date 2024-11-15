@@ -23,7 +23,6 @@ public class ShoppingCartManager {
 		}
 		
 		
-		System.out.println("Enter your full name:");
 		System.out.println("Enter  name:");
 		String name = input.nextLine();
 		

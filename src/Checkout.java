@@ -29,8 +29,15 @@ public class Checkout {
         System.out.println("Are you a member? (yes/no)");
         String response = input.nextLine().toLowerCase();
         
-        switch(response)
+        boolean finsihed = false;
+        while (!finsihed)
         {
+        	
+        }
+        switch(response)	
+        {
+        
+        
         case "yes":
         {
         	
