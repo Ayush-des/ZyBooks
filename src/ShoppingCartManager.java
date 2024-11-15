@@ -23,7 +23,7 @@ public class ShoppingCartManager {
 		}
 		
 		
-		System.out.println("Enter customer's name:");
+		System.out.println("Enter your full name:");
 		String name = input.nextLine();
 		
 		System.out.println("Enter today's date:");
@@ -126,11 +126,6 @@ public class ShoppingCartManager {
 			System.out.println("3. Only in stock items");
 			
 			int filter = input.nextInt();
-			//price logic
-			//perishables logic 
-			/*
-			 * use if statement for this?
-			 */
 			
 			if(filter == 1)
 			{
@@ -147,8 +142,16 @@ public class ShoppingCartManager {
 			
 			break;
 		case 3:
-			System.out.println("OUTPUT ITEMS' DESCRIPTIONS");
-//			cart.printDescriptions();
+			System.out.println("CHANGE ITEM QUANITY IN CART");
+
+			System.out.println("Enter the item name:");
+		    String changeItemName = input.nextLine();
+		    System.out.println("Enter the item quantity:");
+		    int newQuantity = input.nextInt();
+		    input.nextLine();
+		    
+			cart.changeQuantity(changeItemName, newQuantity);
+			
 			
 			break;
 		case 4:
@@ -176,29 +179,40 @@ public class ShoppingCartManager {
 			
 		case 7: //purchasing items in cart
 			System.out.println("PURCHASE ITEMS IN CART");
-			System.out.println("Would you like to purchase these items? (y/n)");
-			String option = input.next();
-			if(option.equalsIgnoreCase("y"))
+			
+			cart.printTotal();
+			
+			if(cart.getNumItemsInCart() > 0)
 			{
-				//call checkout method to check out items
+				System.out.println("Would you like to purchase these items? (yes/no)");
+				String option = input.nextLine();
+				if(option.equalsIgnoreCase("yes"))
+				{
+					//call checkout method to check out items
+					Checkout purhase = new Checkout();
+					purhase.checkout(cart,input);
+				}
+				else if(option.equalsIgnoreCase("no"))
+				{
+					System.out.println("Your purchase has been cancelled.");
+				}
+				else
+				{
+					System.out.println("Please enter a valid input. ");
+				}
+			}else {
+				System.out.println("There are no items in the cart. Please add items to checkout.");
 			}
-			else if(option.equalsIgnoreCase("n"))
-			{
-				System.out.println("Your purchase has been cancelled.");
-			}
-			else
-			{
-				System.out.println("Please enter a valid input. ");
-			}
+			
+			
 			break;
 			
-		case 8: //Apply a promo code
+		case 8: //Apply a promo code 
+			//Delete me and fix numbers
 			break;
 		case 9: //exit the store
 			System.out.println("You are now exiting the store. Thank you for shopping with us!");
 			break;
-		default: 
-			System.out.println("Choose an option");
 		}
 	}
 	

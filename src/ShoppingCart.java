@@ -16,7 +16,7 @@ public class ShoppingCart {
 	{
 		// TODO Auto-generated constructor stub
 		customerName = "none";
-		currentDate = "January 1, 2016";		
+		currentDate = "January 1, 2024";		
 	}
 
 
@@ -43,8 +43,6 @@ public class ShoppingCart {
 	
 	public void addItem(ItemToPurchase item)
 	{
-		
-		
 		cartItems.add(item);
 	}
 	
@@ -64,8 +62,6 @@ public class ShoppingCart {
 				}else {
 					System.out.println("This item is not in stock.");
 				}
-				
-				
 			}
 		}
 		
@@ -75,7 +71,7 @@ public class ShoppingCart {
 		}
 	}
 	
-	public void removeItem(String itemName)
+	public void removeItem(String itemName) // could make into a for each loop
 	{
 		
 		for(int i = 0; i<cartItems.size(); i++)
@@ -93,25 +89,21 @@ public class ShoppingCart {
 		
 	}
 	
-	public void modifyItem(ItemToPurchase item) { // ChatGPT && fix it 
-	    boolean itemFound = false;
-	    for (ItemToPurchase cartItem : cartItems) {
-	        if (cartItem.getName().equals(item.getName())) {
-	            if (!item.getDescription().equals("none")) {
-	                cartItem.setDescription(item.getDescription());
-	            }
-	            if (item.getPrice() != 0) {
-	                cartItem.setPrice(item.getPrice());
-	            }
-	            if (item.getQuantity() != 0) {
-	                cartItem.setQuantity(item.getQuantity());
-	            }
-	            itemFound = true;
-	            break;
-	        }
-	    }
-	    if (!itemFound) {
-	        System.out.println("Item not found in cart.");
+	public void changeQuantity(String itemName, int newQuantity) { 
+	    boolean found = false;
+	    for (ItemToPurchase item : cartItems) {
+	    	
+	    	if(item.getName().equals(itemName))
+	    	{
+	    		item.setQuantityInCart(newQuantity);
+	    		found = true;
+	    	}
+	    	
+	    	
+	    	if(!found) 
+	    	{
+	    		System.out.println("Item not found in cart.");
+	    	}
 	    }
 	}
 
@@ -162,7 +154,7 @@ public class ShoppingCart {
 				int quanity = item.getQuantityInCart();
 				int sum = price * quanity;
 				System.out.println(item.getName() + " " + item.getQuantityInCart() 
-								+ " @ $" + item.getPrice() + " = $" + sum);
+									+ " @ $" + item.getPrice() + " = $" + sum);
 				} 
 			
 		
@@ -173,6 +165,10 @@ public class ShoppingCart {
 		System.out.println("Total: $" + getCostOfCart());	
 	}
 	
+	public void nuke()
+	{
+		cartItems.removeAll(cartItems);
+	}
 	
 	
 	

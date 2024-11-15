@@ -33,16 +33,6 @@ public class ItemToPurchase {
 	 * @param itemDescription
 	 */
 	
-	public ItemToPurchase(String itemName,String itemDescription, int itemPrice) {
-		this.itemName = itemName;
-		this.itemPrice = itemPrice;
-		this.itemQuantity = 0;
-		this.itemDescription = itemDescription;
-		this.inStock = false;
-		
-	}
-	
-
 
 	public ItemToPurchase(String itemName,String itemDescription, int itemPrice, int itemQuantity ) {
 		this.itemName = itemName;
@@ -156,7 +146,7 @@ public class ItemToPurchase {
 	public void printItemCost() // Fix to where it's only the amount customer has in cart
 	{
 		int sum = itemQuantity * itemPrice;
-		System.out.println(itemName + " " + itemQuantity + " @ $" + itemPrice + " = $" + sum);
+		System.out.println(itemName + " " + quantityInCart + " @ $" + itemPrice + " = $" + sum);
 	}
 	
 	public void printItemDescription()
