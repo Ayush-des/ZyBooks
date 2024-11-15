@@ -1,0 +1,91 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class Checkout {
+    private HashSet<String> memberIds;
+    private HashMap<String, String> memberDetails; // Name -> DOB
+
+    public Checkout() {
+        // Predefined member data
+        memberIds = new HashSet<>();
+        memberDetails = new HashMap<>();
+
+        // Add members
+        memberIds.add("12345");
+        memberIds.add("67890");
+        memberIds.add("54321");
+
+        memberDetails.put("Alice Smith", "01/15/1990");
+        memberDetails.put("Bob Johnson", "05/22/1985");
+        memberDetails.put("Carol White", "12/08/1975");
+    }
+
+    public String checkout(ShoppingCart cart) {
+        Scanner scanner = new Scanner(System.in);
+        boolean isMember = false;
+        String name = cart.getCustomerName(); // Always retrieve name from the cart
+        String currentDate = cart.getDate(); // Current date from the cart
+        double total = cart.getCostOfCart();
+
+        // Ask for membership status
+        System.out.println("Are you a member? (yes/no)");
+        String response = scanner.nextLine().toLowerCase();
+
+        if (response.equals("yes")) {
+            System.out.println("How would you like to prove membership?");
+            System.out.println("1. Enter Membership ID");
+            System.out.println("2. Enter Name and Date of Birth");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            if (choice == 1) {
+                System.out.println("Please enter your membership ID:");
+                while (true) {
+                    String memberId = scanner.nextLine();
+                    if (memberIds.contains(memberId)) {
+                        isMember = true;
+                        break;
+                    } else {
+                        System.out.println("Invalid membership ID. Please try again.");
+                    }
+                }
+            } else if (choice == 2) {
+                System.out.println("Please enter your name:");
+                String enteredName = scanner.nextLine();
+                System.out.println("Please enter your date of birth (mm/dd/yyyy):");
+                String enteredDob = scanner.nextLine();
+
+                if (memberDetails.containsKey(enteredName) && memberDetails.get(enteredName).equals(enteredDob)) {
+                    isMember = true;
+                } else {
+                    System.out.println("No matching member found. Please try again.");
+                }
+            } else {
+                System.out.println("Invalid choice.");
+            }
+        }
+
+        if (!isMember) {
+            total += 5.0; // Apply non-member fee
+        }
+
+       // Validate credit card
+System.out.println("Please enter your credit card number (16 digits):");
+String creditCard;
+while (true) {
+    creditCard = scanner.nextLine(); 
+    if (creditCard.matches("{16}")) { 
+        return String.format( "\nOrder Confirmation:\nThank you, %s! Please return your items 30 days after %s.\nTotal: $%.2f",
+            name, currentDate, total);
+        
+    } else {
+        System.out.println("Invalid card number. Please enter a 16-digit number.");
+    }
+}
+
+
+        // Generate confirmation
+        
+    }
+}
