@@ -29,7 +29,15 @@ public class Checkout {
         System.out.println("Are you a member? (yes/no)");
         String response = input.nextLine().toLowerCase();
         
+        switch(response)
+        {
+        case "yes":
+        {
+        	
+        }
         
+        
+        }
 
         if (response.equalsIgnoreCase("yes")) {
         	
@@ -49,7 +57,7 @@ public class Checkout {
             	{
             		return;
             	}else {
-            		System.out.println("Invalid input. Please try again or go back type -1. ");
+            		System.out.println("Invalid input. Please try again or to go back type -1. ");
             		choice = input.nextInt();
             		input.nextLine();
             	}
