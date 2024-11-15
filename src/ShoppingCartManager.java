@@ -180,7 +180,7 @@ public class ShoppingCartManager {
 			String option = input.next();
 			if(option.equalsIgnoreCase("y"))
 			{
-					Checkout checkout = new Checkout();
+				Checkout checkout = new Checkout();
 				System.out.println(checkout.checkout(cart));
 			}
 			else if(option.equalsIgnoreCase("n"))
