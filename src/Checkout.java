@@ -3,6 +3,7 @@ import java.util.*;
 public class Checkout {
     private HashSet<String> memberIds;
     private HashMap<String, String> memberDetails; // Name -> DOB
+//    private  ArrayList<ItemToPurchase> memberHistory;
 
     public Checkout() {
         // Predefined member data
@@ -19,7 +20,7 @@ public class Checkout {
         memberDetails.put("Carol White", "12/08/1975");
     }
 
-    public void checkout(ShoppingCart cart, Scanner input) { //Give the method a scanner object 
+    public void checkout(ShoppingCart cart, Scanner input) { 
         boolean isMember = false;
         String name = cart.getCustomerName(); 
         String currentDate = cart.getDate(); 
@@ -91,10 +92,9 @@ public class Checkout {
         	ItemToPurchase item = new ItemToPurchase("Non MemberFee", "Fee",5,1);
         	item.setQuantityInCart(1);
         	cart.addItem(item);
-        }else {
-        	ItemToPurchase item = new ItemToPurchase("Non MemberFee", "Fee",5,1);
-        	item.setQuantityInCart(1);
-            cart.addItem(item);
+        }else {  // if an invalid choice is made then returns to main menu. 
+        	System.out.println("Invalid choice. Returning to main menu.");
+        	return;
         }
         
          
@@ -128,6 +128,8 @@ public class Checkout {
         		System.out.println("Thank you for your purchase!");
         		System.out.println("Items only eliblle for refund before: " + num + "/" + month);
         		
+//        		memberHistory = new ArrayList<itemToPurchase>();
+//        		for(itemToPurchase item: memberHistory)
         		cart.printTicket();
         		cart.nuke();
         		correct = true;
