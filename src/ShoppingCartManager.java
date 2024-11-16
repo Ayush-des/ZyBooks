@@ -137,36 +137,36 @@ public class ShoppingCartManager {
 	}
 	public static void allItems(Shop store)
 	{
-		//non-perishable
+		//
 		ItemToPurchase item1 = new ItemToPurchase("ToothBrush (10 pack)", "Self Care", 12, 6);
 		store.addItemToShop(item1);
 	
-	ItemToPurchase item2 = new ItemToPurchase("Succulent", "Plant", 5, 10);
-	store.addItemToShop(item2);
-	
-	Produce item6= new Produce("Milk (1 Gallon)", "Dairy", 4, 20, "11/30/2024");
-	store.addItemToShop(item6);
-	
-	ItemToPurchase item3 = new ItemToPurchase("Wireless Earbuds", "Electronics", 45, 5);
-	store.addItemToShop(item3);
-	
-	Produce item9 = new Produce("Chicken Breasts (1 lb)", "Poultry", 12, 5, "11/30/2024");
-	store.addItemToShop(item9);
-	
-	ItemToPurchase item4 = new ItemToPurchase("Granola Bars (12 pack)", "Snack", 10, 7);
-	store.addItemToShop(item4);
-	
-	Produce item7 = new Produce("Eggs (1 Dozen)", "Eggs", 6, 10, "12/13/2024");
-	store.addItemToShop(item7);
-	
-	Produce item8 = new Produce("Butter (4 Pack)", "Dairy", 5, 13, "02/16/2025");
-	store.addItemToShop(item8);
-	
-	ItemToPurchase item5 = new ItemToPurchase("Water Bottles (20 pack)", "Drinks", 12, 15);
-	store.addItemToShop(item5);
-	
-	Produce item10 = new Produce("Vine-Ripe Tomatoes (6 pack)", "Fruit", 8, 10, "12/16/2024");
-	store.addItemToShop(item10);
+		ItemToPurchase item2 = new ItemToPurchase("Succulent", "Plant", 5, 10);
+		store.addItemToShop(item2);
+		
+		Produce item6= new Produce("Milk (1 Gallon)", "Dairy", 4, 20, "11/30/2024");
+		store.addItemToShop(item6);
+		
+		ItemToPurchase item3 = new ItemToPurchase("Wireless Earbuds", "Electronics", 45, 5);
+		store.addItemToShop(item3);
+		
+		Produce item9 = new Produce("Chicken Breasts (1 lb)", "Poultry", 12, 5, "11/30/2024");
+		store.addItemToShop(item9);
+		
+		ItemToPurchase item4 = new ItemToPurchase("Granola Bars (12 pack)", "Snack", 10, 7);
+		store.addItemToShop(item4);
+		
+		Produce item7 = new Produce("Eggs (1 Dozen)", "Eggs", 6, 10, "12/13/2024");
+		store.addItemToShop(item7);
+		
+		Produce item8 = new Produce("Butter (4 Pack)", "Dairy", 5, 13, "02/16/2025");
+		store.addItemToShop(item8);
+		
+		ItemToPurchase item5 = new ItemToPurchase("Water Bottles (20 pack)", "Drinks", 12, 15);
+		store.addItemToShop(item5);
+		
+		Produce item10 = new Produce("Vine-Ripe Tomatoes (6 pack)", "Fruit", 8, 10, "12/16/2024");
+		store.addItemToShop(item10);
 	
 	}
 	private static ShoppingCart customerDetails(Scanner input)
