@@ -31,7 +31,7 @@ public class ShoppingCartManager {
 		System.out.println("5. Add to cart");
 		System.out.println("6. Remove from cart");
 		System.out.println("7. Purchase items in cart"); 
-		System.out.println(); 
+		System.out.println("8. Apply Promo Code"); 
 		System.out.println("9. Exit Shop");
 		System.out.println();
 	}
@@ -103,30 +103,24 @@ public class ShoppingCartManager {
 			
 		case 7: //purchasing items in cart
 			System.out.println("PURCHASE ITEMS IN CART");
-			
-			cart.printTotal();
-			
-			if(cart.getNumItemsInCart() > 0)
+			System.out.println("Would you like to purchase these items? (y/n)");
+			String option = input.next();
+			if(option.equalsIgnoreCase("y"))
 			{
-				System.out.println("Would you like to purchase these items? (yes/no)");
-				String option = input.nextLine();
-				if(option.equalsIgnoreCase("yes"))
-				{
-					//call checkout method to check out items
-					Checkout purhase = new Checkout();
-					purhase.checkout(cart,input);
-				}
-				else if(option.equalsIgnoreCase("no"))
-				{
-					System.out.println("Checkout cancelled.");
-				}
-				else
-				{
-					System.out.println("Please enter a valid input. ");
-				}
-			}else {
-				System.out.println("There are no items in the cart. Please add items to checkout.");
+				Checkout checkout = new Checkout();
+				System.out.println(checkout.checkout(cart));
 			}
+			else if(option.equalsIgnoreCase("n"))
+			{
+				System.out.println("Your purchase has been cancelled.");
+			}
+			else
+			{
+				System.out.println("Please enter a valid input. ");
+			}
+			break;
+			
+		case 8: //Apply a promo code
 			break;
 		case 9: //exit the store
 			System.out.println("You are now exiting the store. Thank you for shopping with us!");
@@ -165,7 +159,7 @@ public class ShoppingCartManager {
 	ItemToPurchase item5 = new ItemToPurchase("Water Bottles (20 pack)", "Drinks", 12, 15);
 	store.addItemToShop(item5);
 	
-	Produce item10 = new Produce("Vine-Ripe Tomatoes (6 pack)", "Fruit", 8, 10, "12/16/2024");
+	Produce item10 = new Produce("Vine-Ripe Tomatoes (6 pack)", "Produce", 8, 10, "12/16/2024");
 	store.addItemToShop(item10);
 	
 	}
