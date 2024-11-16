@@ -34,7 +34,11 @@ public class Shop {
 	{
 		for(ItemToPurchase item : store)
 		{
-			if(item.getDescription().equals("Dairy") || item.getDescription().equals("Fruit")|| item.getDescription().equals("Vegetable"))
+			if(item.getDescription().equals("Dairy") || 
+					item.getDescription().equals("Fruit")|| 
+					item.getDescription().equals("Vegetable")||
+					item.getDescription().equals("Poultry")||
+					item.getDescription().equals("Eggs"))
 			{
 				if(item.inStock) {
 					item.printItem();

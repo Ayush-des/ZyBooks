@@ -26,7 +26,7 @@ public class ShoppingCartManager {
 		System.out.println("Choose one of the following options:");
 		System.out.println("1. View full catalogue");
 		System.out.println("2. Filter");
-		System.out.println("3. Output item descriptions"); //IDK about this one 
+		System.out.println("3. Change item quantity"); //IDK about this one 
 		System.out.println("4. View cart");
 		System.out.println("5. Add to cart");
 		System.out.println("6. Remove from cart");
@@ -74,8 +74,13 @@ public class ShoppingCartManager {
 			
 			break;
 		case 3:
-			System.out.println("OUTPUT ITEMS' DESCRIPTIONS");
-//			cart.printDescriptions();
+			System.out.println("CHANGE ITEM QUANTITY");
+			System.out.println("Enter the item name:");
+		    String itemName1 = input.nextLine();
+		    System.out.println("Enter the item quantity:");
+		    int itemQuantity = input.nextInt();
+		    input.nextLine();
+		    cart.changeQuantity(itemName1, itemQuantity);
 			
 			break;
 		case 4:
@@ -159,7 +164,7 @@ public class ShoppingCartManager {
 		Produce item7 = new Produce("Eggs (1 Dozen)", "Eggs", 6, 10, "12/13/2024");
 		store.addItemToShop(item7);
 		
-		Produce item8 = new Produce("Butter (4 Pack)", "Dairy", 5, 13, "02/16/2025");
+		Produce item8 = new Produce("Butter (4 Pack)", "Dairy", 5, 0, "02/16/2025");
 		store.addItemToShop(item8);
 		
 		ItemToPurchase item5 = new ItemToPurchase("Water Bottles (20 pack)", "Drinks", 12, 15);
@@ -171,72 +176,76 @@ public class ShoppingCartManager {
 	}
 	private static ShoppingCart customerDetails(Scanner input)
 	{
-	System.out.println("Enter customer's name:");
-	String name = input.nextLine();
-	
-	System.out.println("Enter today's date:");
-	String date = input.nextLine();
-	
-	System.out.println();
-	
-	
-	
-	System.out.println("Customer name: " + name);
-	System.out.println("Today's date: " + date);
-	System.out.println();
-	return new ShoppingCart(name, date);
+		System.out.println("Enter customer's name:");
+		String name = input.nextLine();
+		
+		System.out.println("Enter today's date:");
+		String date = input.nextLine();
+		
+		System.out.println();
+		
+		
+		
+		System.out.println("Customer name: " + name);
+		System.out.println("Today's date: " + date);
+		System.out.println();
+		return new ShoppingCart(name, date);
 	}
 	
 	private static void OptionMenu(Scanner input, ShoppingCart cart, Shop store)
 	{
 		boolean done = false;
-	while (!done)
-	{
-		printMenu();
-		System.out.println("Choose an option:");
-		
-		int goodOptions [] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-		int option = input.nextInt();
-		input.nextLine();
-				
-		boolean correctInput = false;
-		
-		for(int i=0; i<goodOptions.length; i++)
+		while (!done)
 		{
-	
-			for(int j=0; j<goodOptions.length; j++)
+			printMenu();
+			System.out.println("Choose an option:");
+			
+			int goodOptions [] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+			int option = input.nextInt();
+			input.nextLine();
+					
+			boolean correctInput = false;
+			
+			for(int i=0; i<goodOptions.length; i++)
 			{
-				if(option == goodOptions[j])
+		
+				for(int j=0; j<goodOptions.length; j++)
 				{
-					correctInput = true;
-					break;
+					if(option == goodOptions[j])
+					{
+						correctInput = true;
+						break;
+					}
 				}
-			}
-			
-			if(correctInput == false)
-			{
-				System.out.println("Invalid Input. Please choose an option 1-9.");
-				option = input.nextInt();
 				
-				i=0;
+				if(correctInput == false)
+				{
+					System.out.println("Invalid Input. Please choose an option 1-9.");
+					option = input.nextInt();
+					
+					i=0;
+				}
+				
 			}
 			
-		}
-		
-		
-		if (option == 9) 
-		{ 
-			done = true; 
-		}
-		
-		executeMenu(option, cart, input, store);	
-		
-		if (!done)
-			{
-			System.out.println();
+			
+			if (option == 9) 
+			{ 
+				done = true; 
 			}
+			
+			executeMenu(option, cart, input, store);	
+			
+			if (!done)
+				{
+				System.out.println();
+				}
+		}
+	
 	}
 	
-}
+	
+	
+	
 }
 	

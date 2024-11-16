@@ -123,8 +123,17 @@ public class ItemToPurchase {
 	/**
 	 * @param quantityInCart the quantityInCart to set
 	 */
-	public void setQuantityInCart(int quantityInCart) {
+	public boolean setQuantityInCart(int quantityInCart) {
+		
+		if(quantityInCart > itemQuantity)
+		{
+			System.out.println("Quantity in stock is only " + itemQuantity + ".");
+			System.out.println("Please try another number");
+			return false;
+		}
+		
 		this.quantityInCart = quantityInCart;
+		return true;
 	}
 
 

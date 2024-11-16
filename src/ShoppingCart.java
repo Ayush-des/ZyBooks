@@ -48,27 +48,55 @@ public class ShoppingCart {
 	
 	public void addItem(String itemName , int quantity, Shop store)
 	{
-		boolean found = false;
-	
-		for(ItemToPurchase item : store.getStore())
+		if(quantity <= 0)
 		{
-			if(item.getName().equals(itemName))
+			System.out.println("Cannot add item with quanity of 0 or less.");
+			return;
+		}
+		
+		boolean isInCart = false;
+		
+		for(ItemToPurchase itemCheck : store.getStore())
+		{
+			if(itemCheck.getName().equals(itemName))
 			{
-				found = true;
-				
-				if(item.inStock) {
-					cartItems.add(item);
-					item.setQuantityInCart(quantity);
-				}else {
-					System.out.println("This item is not in stock. Or not in stock for the quantity");
+				if(cartItems.contains(itemCheck))
+				{
+					isInCart = true;
 				}
 			}
 		}
 		
-		if(!found)
+		if(isInCart == false)
 		{
-			System.out.println("Please enter a valid item.");
-		}
+			boolean found = false;
+			
+			for(ItemToPurchase item : store.getStore())
+			{
+				if(item.getName().equals(itemName))
+				{
+					found = true;
+					
+					if(item.inStock) {
+						
+						if(item.setQuantityInCart(quantity))
+							{
+								cartItems.add(item);
+							}
+						
+					}else if(item.inStock == false){
+						System.out.println("This item is not in stock.");
+					}
+				}
+			}
+			
+			if(!found)
+			{
+				System.out.println("Please enter a valid item.");
+			}
+		}else if(isInCart == true){
+			System.out.println("Item is already in cart.");		}
+		
 	}
 	
 	public void removeItem(String itemName) // could make into a for each loop
@@ -95,16 +123,22 @@ public class ShoppingCart {
 	    	
 	    	if(item.getName().equals(itemName))
 	    	{
-	    		item.setQuantityInCart(newQuantity);
-	    		found = true;
-	    	}
-	    	
-	    	
-	    	if(!found) 
-	    	{
-	    		System.out.println("Item not found in cart.");
+	    		if(newQuantity <= 0)
+	    		{
+	    			System.out.println("Please enter a number greater than 0.");
+	    			found=true;
+	    		}else {
+		    		item.setQuantityInCart(newQuantity);
+		    		found = true;
+	    		}
+
 	    	}
 	    }
+	    
+	    if(!found) 
+    	{
+    		System.out.println("Item not found in cart.");
+    	}
 	}
 
 	
