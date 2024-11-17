@@ -3,7 +3,7 @@ import java.util.*;
 public class Checkout {
     private HashSet<String> memberIds;
     private HashMap<String, String> memberDetails; // Name -> DOB
-//    private  ArrayList<ItemToPurchase> memberHistory;
+
 
     public Checkout() {
         // Predefined member data
@@ -128,8 +128,7 @@ public class Checkout {
         		System.out.println("Thank you for your purchase!");
         		System.out.println("Items only eliblle for refund before: " + num + "/" + month);
         		
-//        		memberHistory = new ArrayList<itemToPurchase>();
-//        		for(itemToPurchase item: memberHistory)
+
         		cart.printTicket();
         		cart.nuke();
         		correct = true;
