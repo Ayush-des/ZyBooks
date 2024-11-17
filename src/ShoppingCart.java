@@ -1,5 +1,3 @@
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 
 public class ShoppingCart {
@@ -7,8 +5,10 @@ public class ShoppingCart {
 	private String customerName;
 	private String currentDate;
 	private ArrayList <ItemToPurchase>cartItems = new ArrayList<ItemToPurchase> ();
+	private Scanner scan, fileReader;
 	
-
+	
+	private ArrayList <ItemToPurchase> allItems = new ArrayList<ItemToPurchase>();
 	
 	public ShoppingCart() 
 	{

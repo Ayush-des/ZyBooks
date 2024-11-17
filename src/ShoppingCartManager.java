@@ -31,8 +31,7 @@ public class ShoppingCartManager {
 		System.out.println("5. Add to cart");
 		System.out.println("6. Remove from cart");
 		System.out.println("7. Purchase items in cart"); 
-		System.out.println(); 
-		System.out.println("9. Exit Shop");
+		System.out.println("8. Exit Shop");
 		System.out.println();
 	}
 
@@ -129,7 +128,8 @@ public class ShoppingCartManager {
 				System.out.println("There are no items in the cart. Please add items to checkout.");
 			}
 			break;
-		case 9: //exit the store
+			
+		case 8: //exit the store
 			System.out.println("You are now exiting the store. Thank you for shopping with us!");
 			break;
 		default: 
@@ -163,7 +163,7 @@ public class ShoppingCartManager {
 			printMenu();
 			System.out.println("Choose an option:");
 			
-			int goodOptions [] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+			int goodOptions [] = {1, 2, 3, 4, 5, 6, 7, 8};
 			int option = input.nextInt();
 			input.nextLine();
 					
@@ -183,7 +183,7 @@ public class ShoppingCartManager {
 				
 				if(correctInput == false)
 				{
-					System.out.println("Invalid Input. Please choose an option 1-9.");
+					System.out.println("Invalid Input. Please choose an option 1-8.");
 					option = input.nextInt();
 					
 					i=0;
@@ -192,7 +192,7 @@ public class ShoppingCartManager {
 			}
 			
 			
-			if (option == 9) 
+			if (option == 8) 
 			{ 
 				done = true; 
 			}

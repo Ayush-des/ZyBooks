@@ -5,7 +5,6 @@ public class Shop {
 
 	public static ArrayList<ItemToPurchase> store;
 	
-	
 	public Shop()
 	{
 		store = new ArrayList<ItemToPurchase>();
@@ -72,13 +71,20 @@ public class Shop {
 	{
 		for(ItemToPurchase item : store)
 		{
-			if(item.perishable())
-			{
-				if(item.inStock ) {
-					item.printItem();
-					System.out.println();
+			if(item.perishable()) {
+				if(item.getDescription().equals("Dairy") || 
+						item.getDescription().equals("Fruit")|| 
+						item.getDescription().equals("Vegetable")||
+						item.getDescription().equals("Poultry")||
+						item.getDescription().equals("Eggs"))
+				{
+					if(item.inStock) {
+						item.printItem();
+						System.out.println();
+					}
 				}
 			}
+			
 		}
 	}
 	

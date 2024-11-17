@@ -3,7 +3,7 @@ import java.util.*;
 public class Checkout {
     private HashSet<String> memberIds;
     private HashMap<String, String> memberDetails; // Name -> DOB
-
+//    private  ArrayList<ItemToPurchase> memberHistory;
 
     public Checkout() {
         // Predefined member data
@@ -74,17 +74,30 @@ public class Checkout {
                     }
                 }
             } else if (choice == 2) {
-                System.out.println("Please enter your name:");
-                String enteredName = input.nextLine();
+            	boolean correctDob = false;
+            	 System.out.println("Please enter your name:");
+                 String enteredName = input.nextLine();
+            	while(!correctDob) {
+           
                 System.out.println("Please enter your date of birth (mm/dd/yyyy):");
                 String enteredDob = input.nextLine();
 
+            	
                 if (memberDetails.containsKey(enteredName) && memberDetails.get(enteredName).equals(enteredDob)) {
                     isMember = true;
+                    correctDob = true;
                 } else {
                     System.out.println("No matching member found. Please try again.");
+                    System.out.println("Enter 'cancel' to return to menu.");
                 }
-            } else {
+                if(enteredDob.equals("cancel"))
+                {
+                	return;
+                }
+            } 
+            }
+            
+            	else {
                 System.out.println("Invalid choice.");
             }
         }else if(response.equalsIgnoreCase("no"))
@@ -126,9 +139,10 @@ public class Checkout {
         		System.out.println();
         		System.out.println("Order Confirmation #" + rando);
         		System.out.println("Thank you for your purchase!");
-        		System.out.println("Items only eliblle for refund before: " + num + "/" + month);
+        		System.out.println("Items only eliblle for refund before: " + num + month);
         		
-
+//        		memberHistory = new ArrayList<itemToPurchase>();
+//        		for(itemToPurchase item: memberHistory)
         		cart.printTicket();
         		cart.nuke();
         		correct = true;
