@@ -171,6 +171,10 @@ public class ItemToPurchase {
 		System.out.println("Description: " + itemDescription); 
 	}
 	
+	public boolean perishable()
+	{
+		return false;
+	}
 	
 	
 }

@@ -48,6 +48,11 @@ public class Produce extends ItemToPurchase {
 		System.out.println("Expiration date: " + expirationDate);
 	}
 	
+	@Override
+	public boolean perishable()
+	{
+		return true;
+	}
 	
 	
 }

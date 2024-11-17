@@ -5,6 +5,7 @@ public class Shop {
 
 	public static ArrayList<ItemToPurchase> store;
 	
+	
 	public Shop()
 	{
 		store = new ArrayList<ItemToPurchase>();
@@ -42,6 +43,9 @@ public class Shop {
 		
 		Produce item10 = new Produce("Vine-Ripe Tomatoes (6 pack)", "Fruit", 8, 10, "12/16/2024");
 		addItemToShop(item10);
+		
+		ItemToPurchase item11 = new ItemToPurchase("Frozen Berries", "Fruit", 10, 5);
+		addItemToShop(item11);
 	
 	}
 	
@@ -68,13 +72,9 @@ public class Shop {
 	{
 		for(ItemToPurchase item : store)
 		{
-			if(item.getDescription().equals("Dairy") || 
-					item.getDescription().equals("Fruit")|| 
-					item.getDescription().equals("Vegetable")||
-					item.getDescription().equals("Poultry")||
-					item.getDescription().equals("Eggs"))
+			if(item.perishable())
 			{
-				if(item.inStock) {
+				if(item.inStock ) {
 					item.printItem();
 					System.out.println();
 				}
