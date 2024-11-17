@@ -77,7 +77,7 @@ public class ShoppingCart {
 				{
 					found = true;
 					
-					if(item.inStock) {
+					if(item.inStock == true) {
 						
 						if(item.setQuantityInCart(quantity))
 							{

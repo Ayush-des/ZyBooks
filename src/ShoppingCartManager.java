@@ -8,7 +8,7 @@ public class ShoppingCartManager {
 		
 		//calls all items in the store
 		Shop store = new Shop();
-		allItems(store);
+		store.allItems();
 
 		//Scanner takes customer input
 		ShoppingCart cart = customerDetails(input);
@@ -26,7 +26,7 @@ public class ShoppingCartManager {
 		System.out.println("Choose one of the following options:");
 		System.out.println("1. View full catalogue");
 		System.out.println("2. Filter");
-		System.out.println("3. Change item quantity"); //IDK about this one 
+		System.out.println("3. Change item quantity"); 
 		System.out.println("4. View cart");
 		System.out.println("5. Add to cart");
 		System.out.println("6. Remove from cart");
@@ -52,20 +52,16 @@ public class ShoppingCartManager {
 
 		case 2:
 			System.out.println("Choose filter option: ");
-			System.out.println("1. Price (highest to lowest)");
-			System.out.println("2. Perishables in stock");
-			System.out.println("3. Only in stock items");
+			System.out.println("1. Perishables in stock");
+			System.out.println("2. In stock items");
 			
 			int filter = input.nextInt();
 	
 			
 			if(filter == 1)
 			{
-				Shop.filterPrice();
-			}else if(filter == 2)
-			{
 				Shop.printProduce();
-			}else if(filter ==3 )
+			}else if(filter == 2)
 			{
 				Shop.printInStockItems();
 			}else {
@@ -88,7 +84,7 @@ public class ShoppingCartManager {
 			cart.printTotal();
 			 
 			break;
-		case 5: //fix this to output the price and description when a name is entered
+		case 5: 
 			System.out.println("ADD ITEM TO CART");
 		    System.out.println("Enter the item name:");
 		    String name = input.nextLine();
@@ -140,40 +136,7 @@ public class ShoppingCartManager {
 			System.out.println("Choose an option");
 		}
 	}
-	public static void allItems(Shop store)
-	{
-		//
-		ItemToPurchase item1 = new ItemToPurchase("ToothBrush (10 pack)", "Self Care", 12, 6);
-		store.addItemToShop(item1);
 	
-		ItemToPurchase item2 = new ItemToPurchase("Succulent", "Plant", 5, 10);
-		store.addItemToShop(item2);
-		
-		Produce item6= new Produce("Milk (1 Gallon)", "Dairy", 4, 20, "11/30/2024");
-		store.addItemToShop(item6);
-		
-		ItemToPurchase item3 = new ItemToPurchase("Wireless Earbuds", "Electronics", 45, 5);
-		store.addItemToShop(item3);
-		
-		Produce item9 = new Produce("Chicken Breasts (1 lb)", "Poultry", 12, 5, "11/30/2024");
-		store.addItemToShop(item9);
-		
-		ItemToPurchase item4 = new ItemToPurchase("Granola Bars (12 pack)", "Snack", 10, 7);
-		store.addItemToShop(item4);
-		
-		Produce item7 = new Produce("Eggs (1 Dozen)", "Eggs", 6, 10, "12/13/2024");
-		store.addItemToShop(item7);
-		
-		Produce item8 = new Produce("Butter (4 Pack)", "Dairy", 5, 0, "02/16/2025");
-		store.addItemToShop(item8);
-		
-		ItemToPurchase item5 = new ItemToPurchase("Water Bottles (20 pack)", "Drinks", 12, 15);
-		store.addItemToShop(item5);
-		
-		Produce item10 = new Produce("Vine-Ripe Tomatoes (6 pack)", "Fruit", 8, 10, "12/16/2024");
-		store.addItemToShop(item10);
-	
-	}
 	private static ShoppingCart customerDetails(Scanner input)
 	{
 		System.out.println("Enter customer's name:");
