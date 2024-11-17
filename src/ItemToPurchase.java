@@ -158,10 +158,6 @@ public class ItemToPurchase {
 		System.out.println(itemName + " " + quantityInCart + " @ $" + itemPrice + " = $" + sum);
 	}
 	
-	public void printItemDescription()
-	{
-		System.out.println(itemName + ": " + itemDescription);
-	}
 	
 	
 	public void printItem()
